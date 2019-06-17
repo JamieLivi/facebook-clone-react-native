@@ -28,8 +28,24 @@ export default class Profile extends Component {
                     </View>
                 </View>
                 <View style={styles.menuBar}>
-                    
-
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/news.png')} />
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center'}}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/group.png')} />
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center'}}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/video.png')} />
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center'}}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/profile-active.png')} />
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center'}}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/notif.png')} />
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center' }}>
+                        <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/hamburger.png')} />
+                    </View>
                 </View>
             </View>
         );
@@ -72,9 +88,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         flex: 1,
         borderBottomWidth: 1,
-        borderColor: '#a1b3d9'
+        borderColor: '#a1b3d9',
+        alignItems: 'center',
+        flexDirection: 'row'
     },
     logo: {
+        width: 30,
+        height: 30,
+
+    },
+    logoMenuBar: {
         width: 30,
         height: 30,
 
