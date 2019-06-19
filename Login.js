@@ -7,13 +7,37 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, Image, View } from 'react-native';
+import { StyleSheet, Text, Image, View, Alert } from 'react-native';
 import { Container, Content, Form, Item, Input, Button, StyleProvider } from 'native-base';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 
+// variable initialization
+const images = {
+	image1: require('./android/app/src/main/assets/img/loginhead.png'),
+	image2: require('./android/app/src/main/assets/img/facebookLogo.png')
+}
+
+onChangePicture = () => {
+	// this.setState({
+	// 	image: images.image2
+	// })
+	Alert.alert(
+		'Maaf Belum Bisa Apa2'
+	)
+}
+
 
 export default class Login extends Component {
+	constructor() {
+		super();
+		this.state = {
+			username: 'rahadian.permana',
+			password: '12345678',
+			image : images.image1
+		}
+	}
+
 	render() {
 
 		return (
@@ -25,21 +49,23 @@ export default class Login extends Component {
 							<Image
 								style={styles.logo}
 								// resizeMode="contain"
-								source={require('./android/app/src/main/assets/img/loginhead.png')}
+								source={this.state.image}
 							/>
 							<Text style={{ textAlign: 'center', marginTop: 5 }}>Bahasa Indonesia • English • More..</Text>
 						</View>
 						<View style={styles.body}>
 
-							<Form>
-								<Item fixedLabel style={styles.item}>
-									<Input placeholder="Email or Phone" />
+							<Form >
+								<Item onFocus={this.onChangePicture} fixedLabel style={styles.item}>
+									<Input onFocus={this.onChangePicture} placeholder="Email or Phone" value={this.state.username} />
 								</Item>
 								<Item fixedLabel style={styles.item}>
-									<Input secureTextEntry={true} placeholder="Password" />
+									<Input secureTextEntry={true} placeholder="Password" value={this.state.password} />
 								</Item>
 							</Form>
-							<Button block style={styles.buttonLogin}>
+							<Button block style={styles.buttonLogin} onPress={() => {
+								this.props.navigation.navigate('Profile')
+							}}>
 								<Text style={{ color: '#fff' }}>Log In</Text>
 							</Button>
 							<Text style={styles.forgotPass}>Forgot Password ?</Text>
@@ -67,6 +93,7 @@ export default class Login extends Component {
 	}
 }
 
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1
@@ -78,7 +105,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	logo: {
-		height: 250,
+		height: 200,
 		width: '100%'
 	},
 	body: {
