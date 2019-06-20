@@ -1,0 +1,210 @@
+{
+    "results": [
+        {
+            "name": {
+                "title": "ms",
+                "first": "heidi",
+                "last": "edwards"
+            },
+            "registered": {
+                "date": "2012-06-21T14:14:47Z",
+                "age": 6
+            },
+            "id": {
+                "name": "NINO",
+                "value": "RS 95 82 19 O"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/34.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/34.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/34.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mrs",
+                "first": "katie",
+                "last": "rhodes"
+            },
+            "registered": {
+                "date": "2011-06-14T01:23:10Z",
+                "age": 8
+            },
+            "id": {
+                "name": "NINO",
+                "value": "NC 33 16 17 S"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/47.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/47.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/47.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "miss",
+                "first": "tracey",
+                "last": "jennings"
+            },
+            "registered": {
+                "date": "2013-05-12T15:33:20Z",
+                "age": 6
+            },
+            "id": {
+                "name": "NINO",
+                "value": "SL 09 98 56 D"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/75.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/75.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/75.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mr",
+                "first": "tommy",
+                "last": "harrison"
+            },
+            "registered": {
+                "date": "2011-09-20T11:12:06Z",
+                "age": 7
+            },
+            "id": {
+                "name": "NINO",
+                "value": "JH 89 24 01 U"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/85.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/85.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/85.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "miss",
+                "first": "alice",
+                "last": "williamson"
+            },
+            "registered": {
+                "date": "2012-08-26T03:23:26Z",
+                "age": 6
+            },
+            "id": {
+                "name": "NINO",
+                "value": "NC 14 77 38 T"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/6.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/6.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/6.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mr",
+                "first": "dylan",
+                "last": "lee"
+            },
+            "registered": {
+                "date": "2014-04-29T08:48:46Z",
+                "age": 5
+            },
+            "id": {
+                "name": "NINO",
+                "value": "XB 63 37 70 I"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/87.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/87.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/87.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "miss",
+                "first": "mary",
+                "last": "roberts"
+            },
+            "registered": {
+                "date": "2013-10-22T19:02:15Z",
+                "age": 5
+            },
+            "id": {
+                "name": "NINO",
+                "value": "ZX 07 99 77 V"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/71.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/71.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/71.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mrs",
+                "first": "patricia",
+                "last": "cunningham"
+            },
+            "registered": {
+                "date": "2008-12-09T11:10:12Z",
+                "age": 10
+            },
+            "id": {
+                "name": "NINO",
+                "value": "WA 41 89 02 H"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/86.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mr",
+                "first": "raymond",
+                "last": "morris"
+            },
+            "registered": {
+                "date": "2016-11-30T15:43:52Z",
+                "age": 2
+            },
+            "id": {
+                "name": "NINO",
+                "value": "JE 15 35 49 P"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/87.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/87.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/87.jpg"
+            }
+        },
+        {
+            "name": {
+                "title": "mr",
+                "first": "clifton",
+                "last": "bell"
+            },
+            "registered": {
+                "date": "2009-02-17T18:16:56Z",
+                "age": 10
+            },
+            "id": {
+                "name": "NINO",
+                "value": "MC 78 14 19 W"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/men/5.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/men/5.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/men/5.jpg"
+            }
+        }
+    ],
+    "info": {
+        "seed": "c244b67d52b08662",
+        "results": 10,
+        "page": 1,
+        "version": "1.2"
+    }
+}

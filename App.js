@@ -7,7 +7,6 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, Image, View, Button } from 'react-native';
 import { Container, Content, StyleProvider } from 'native-base';
 import Login from './Login';
 import Profile from './Profile';
@@ -29,46 +28,13 @@ export default class App extends Component {
   }
 }
 
-class HomeScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => {
-            this.props.navigation.navigate('Details')
-          }}
-        />
-      </View>
-    );
-  }
-}
-class DetailsScreen extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Details Screen</Text>
-        <Button
-          title="Go to Home"
-          onPress={() => {
-            this.props.navigation.navigate('Home')
-          }}
-        />
-      </View>
-    );
-  }
-}
-
 const AppNavigator = createStackNavigator(
   {
     Login: Login,
-    Details: DetailsScreen,
-    Home: HomeScreen,
     Profile: Profile
   },
   {
-    initialRouteName: "Login",
+    initialRouteName: "Profile",
     defaultNavigationOptions : {
       header: null
     }
