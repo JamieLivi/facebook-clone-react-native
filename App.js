@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import { Container, Content, StyleProvider } from 'native-base';
 import Login from './Login';
-import Profile from './Profile';
+import Profile from './Component/Profile';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 
