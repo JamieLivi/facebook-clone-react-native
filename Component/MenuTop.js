@@ -4,47 +4,47 @@ import { StyleSheet, TextInput, Image, View, TouchableOpacity } from 'react-nati
 export default class MenuTop extends Component {
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#606770' }}>
+            <View style={styles.container}>
                 <View style={styles.header}>
                     {/* Header */}
                     <View style={styles.searchbar}>
 
                         <View style={styles.searchBarItem}>
                             <TouchableOpacity>
-                                <Image style={styles.logo} source={require('./android/app/src/main/assets/icons/camera.png')} />
+                                <Image style={styles.logo} source={require('../android/app/src/main/assets/icons/camera.png')} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.searchBarItemInput}>
                             <View style={styles.logoSearch}>
-                                <Image style={styles.logoSearchImage} source={require('./android/app/src/main/assets/icons/search.png')} />
+                                <Image style={styles.logoSearchImage} source={require('../android/app/src/main/assets/icons/search.png')} />
                             </View>
                             <TextInput style={styles.searchBarInput} placeholderTextColor="#a1b3d9" placeholder='Cari' />
                         </View>
                         <View style={styles.searchBarItem}>
-                            <Image style={styles.logo} source={require('./android/app/src/main/assets/icons/ngopi.png')} />
+                            <Image style={styles.logo} source={require('../android/app/src/main/assets/icons/ngopi.png')} />
                         </View>
                     </View>
 
                     {/* Menu Bar */}
                     <View style={styles.menuBar}>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/news.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/news.png')} />
                         </View>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/group.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/group.png')} />
                         </View>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/video.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/video.png')} />
                         </View>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/profile-active.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/profile-active.png')} />
                         </View>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/notif.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/notif.png')} />
                         </View>
-                        <View style={{ flex: 1, alignItems: 'center' }}>
-                            <Image style={styles.logoMenuBar} source={require('./android/app/src/main/assets/icons/hamburger.png')} />
+                        <View style={styles.menuBarItem}>
+                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/hamburger.png')} />
                         </View>
                     </View>
                 </View>
@@ -54,6 +54,10 @@ export default class MenuTop extends Component {
     }
 }
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#606770'
+    },
     header: {
         backgroundColor: '#4267b2ff',
         height: 100,
@@ -94,6 +98,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row'
     },
+    menuBarItem: { flex: 1, alignItems: 'center'},
     logo: {
         width: 30,
         height: 30,

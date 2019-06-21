@@ -9,13 +9,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Image, View, Alert } from 'react-native';
 import { Container, Content, Form, Item, Input, Button, StyleProvider } from 'native-base';
-import getTheme from './native-base-theme/components';
-import material from './native-base-theme/variables/material';
+import getTheme from '../native-base-theme/components';
+import material from '../native-base-theme/variables/material';
 
 // variable initialization
 const images = {
-	image1: require('./android/app/src/main/assets/img/loginhead.png'),
-	image2: require('./android/app/src/main/assets/img/facebookLogo.png')
+	image1: require('../android/app/src/main/assets/img/loginhead.png'),
+	image2: require('../android/app/src/main/assets/img/facebookLogo.png')
 }
 
 onChangePicture = () => {

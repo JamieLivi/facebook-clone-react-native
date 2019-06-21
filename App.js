@@ -8,8 +8,9 @@
 
 import React, { Component } from 'react';
 import { Container, Content, StyleProvider } from 'native-base';
-import Login from './Login';
+import Login from './Component/Login';
 import Profile from './Component/Profile';
+import Home from './Component/Screens/Home';
 import getTheme from './native-base-theme/components';
 import material from './native-base-theme/variables/material';
 
@@ -31,10 +32,11 @@ export default class App extends Component {
 const AppNavigator = createStackNavigator(
   {
     Login: Login,
-    Profile: Profile
+    Profile: Profile,
+    Home : Home
   },
   {
-    initialRouteName: "Profile",
+    initialRouteName: "Home",
     defaultNavigationOptions : {
       header: null
     }

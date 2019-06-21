@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView, Image, ImageBackground, View, TouchableOpacity, Alert, Button } from 'react-native';
-import MenuTop from '../MenuTop';
+import MenuTop from './MenuTop';
 import { Icon } from 'react-native-elements'
 
 const showAlert = () => {
@@ -30,9 +30,7 @@ export default class Profile extends Component {
                             <Image style={styles.bannerImage} source={require('../android/app/src/main/assets/img/loginhead.png')} />
                         </View >
                         <View style={styles.profilePictureContainer}>
-                            <View style={styles.profilePicture}>
-
-                            </View>
+                            <Image style={styles.profilePicture} resizeMode='cover' source={require('../assets/img/profilePicture.jpg')} />
                         </View>
                         <View style={styles.profileInformationContainer}>
                             <Text style={[styles.profileInformation, styles.fontBold22]} >
@@ -97,8 +95,8 @@ export default class Profile extends Component {
                                 </Text>
                             </View>
                             <View style={styles.friendImageWrapper}>
-                                {friendlistData.results.slice(0, 6).map((item, key) => {
 
+                                {friendlistData.results.slice(0, 6).map((item, key) => {
                                     return (
                                         <View key={key} style={{ justifyContent: 'center' }}>
                                             <ImageBackground
@@ -112,6 +110,7 @@ export default class Profile extends Component {
                                         </View>
                                     );
                                 })}
+
                             </View>
                             <ButtonVertical
                                 buttonName='See All Friends'
@@ -166,6 +165,7 @@ export default class Profile extends Component {
                             <View style={{ height: 180}}>
                                 <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
                                     <View style={{ marginLeft: 10, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
+                                       
                                         {userData.map((item, key) => {
                                             return (
                                                 <ImageBackground
@@ -177,6 +177,7 @@ export default class Profile extends Component {
                                                 </ImageBackground >
                                             );
                                         })}
+                                   
                                     </View>
                                 </ScrollView>
                                 <VerticalLine height={10} />
@@ -397,7 +398,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff'
     },
     body: {
-        backgroundColor: 'lime',
         flex: 5,
         borderTopRightRadius: 6,
         borderTopLeftRadius: 6,

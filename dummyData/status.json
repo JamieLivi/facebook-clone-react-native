@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2001",
+        "name": "Saitama",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, minima sint deleniti aspernatur, rerum facilis doloremque doloribus non, aperiam quo maiores nam quis magni dolore nulla. Quo reiciendis quam repellendus.",
+        "minute": "10 minute ago",
+        "like": "",
+        "love": "",
+        "comments": ""
+    },
+    {
+        "id": "2002",
+        "name": "Sonic",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, minima sint deleniti aspernatur, rerum facilis doloremque doloribus non, aperiam quo maiores nam quis magni dolore nulla. Quo reiciendis quam repellendus.",
+        "minute": "45 minute ago",
+        "like": "19",
+        "love": "2",
+        "comments": "1"
+    },
+    {
+        "id": "2003",
+        "name": "King",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, minima sint deleniti aspernatur, rerum facilis doloremque doloribus non, aperiam quo maiores nam quis magni dolore nulla. Quo reiciendis quam repellendus.",
+        "minute": "10 minute ago",
+        "like": "999.999",
+        "love": "100.000",
+        "comments": "100.000"
+    },
+    {
+        "id": "2004",
+        "name": "fang",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, minima sint deleniti aspernatur, rerum facilis doloremque doloribus non, aperiam quo maiores nam quis magni dolore nulla. Quo reiciendis quam repellendus.",
+        "minute": "10 minute ago",
+        "like": "1",
+        "love": "",
+        "comments": ""
+    }
+]
