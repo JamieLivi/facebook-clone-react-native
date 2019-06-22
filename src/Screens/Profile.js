@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView, Image, ImageBackground, View, TouchableOpacity, Alert, Button } from 'react-native';
-import MenuTop from './MenuTop';
+import MenuTop from '../SmallComponent/MenuTop';
 import { Icon } from 'react-native-elements'
 
 const showAlert = () => {
@@ -10,8 +10,10 @@ const showAlert = () => {
     )
 }
 
-const userData = require('../dummyData/user.json')
-const friendlistData = require('../dummyData/friendList.json')
+const users = require('../dummyData/user.json')
+const friends = require('../dummyData/friendList.json')
+const profilePicture = require('../assets/img/profilePicture.jpg');
+const likeEmoticon = require('../assets/icon/like-emot.png')
 
 export default class Profile extends Component {
     constructor(props) {
@@ -23,14 +25,13 @@ export default class Profile extends Component {
         return (
 
             <View style={styles.Container}>
-                <ScrollView stickyHeaderIndices={[0]} >
-                    <MenuTop style={styles.stickMenuTop} />
+                <ScrollView >
                     <View style={styles.body}>
                         <View style={styles.banner}>
-                            <Image style={styles.bannerImage} source={require('../android/app/src/main/assets/img/loginhead.png')} />
+                            <Image style={styles.bannerImage} source={require('../assets/img/loginhead.png')} />
                         </View >
                         <View style={styles.profilePictureContainer}>
-                            <Image style={styles.profilePicture} resizeMode='cover' source={require('../assets/img/profilePicture.jpg')} />
+                            <Image style={styles.profilePicture} resizeMode='cover' source={profilePicture} />
                         </View>
                         <View style={styles.profileInformationContainer}>
                             <Text style={[styles.profileInformation, styles.fontBold22]} >
@@ -64,14 +65,14 @@ export default class Profile extends Component {
                             <ProfileStatus />
                         </View>
                         <View style={styles.groupImageItemWrapper}>
-                            {userData.map((item, key) => {
+                            {users.map((user, key) => {
                                 return (
                                     <ImageBackground
                                         key={key}
                                         imageStyle={{ borderRadius: 4 }}
                                         resizeMode='cover'
                                         style={styles.groupImageItem}
-                                        source={{ uri: item.avatar }}>
+                                        source={{ uri: user.avatar }}>
                                         <Text style={styles.groupImageItemText}>Group</Text>
                                         <ButtonCircle name='users' type='font-awesome' color='#1e1f21' />
                                     </ImageBackground >
@@ -96,17 +97,17 @@ export default class Profile extends Component {
                             </View>
                             <View style={styles.friendImageWrapper}>
 
-                                {friendlistData.results.slice(0, 6).map((item, key) => {
+                                {friends.results.slice(0, 6).map((friend, key) => {
                                     return (
                                         <View key={key} style={{ justifyContent: 'center' }}>
                                             <ImageBackground
                                                 imageStyle={{ borderRadius: 5 }}
                                                 resizeMode='cover'
                                                 style={[styles.friendImageItem]}
-                                                source={{ uri: item.picture.medium }}>
+                                                source={{ uri: friend.picture.medium }}>
 
                                             </ImageBackground >
-                                            <Text style={styles.friendImageItemText}>{item.name.first}</Text>
+                                            <Text style={styles.friendImageItemText}>{friend.name.first}</Text>
                                         </View>
                                     );
                                 })}
@@ -132,7 +133,7 @@ export default class Profile extends Component {
                         {/* button status */}
                         <View>
                             <View style={styles.buttonStatusWrapper}>
-                                <Image style={styles.buttonStatusImage} source={require('../assets/img/profilePicture.jpg')} />
+                                <Image style={styles.buttonStatusImage} source={profilePicture} />
                                 <TextInput
                                     style={{ marginLeft: 10 }}
                                     value={this.state.text}
@@ -166,13 +167,13 @@ export default class Profile extends Component {
                                 <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
                                     <View style={{ marginLeft: 10, justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row' }}>
                                        
-                                        {userData.map((item, key) => {
+                                        {users.map((user, key) => {
                                             return (
                                                 <ImageBackground
                                                     imageStyle={{ borderRadius: 20 }}
                                                     key={key}
                                                     style={styles.groupStoriesItem}
-                                                    source={{ uri: item.avatar }}>
+                                                    source={{ uri: user.avatar }}>
                                                     <Text style={styles.groupStoriesItemText}>Stories</Text>
                                                 </ImageBackground >
                                             );
@@ -331,7 +332,7 @@ class PostCard extends Component {
             <View style={{ marginHorizontal: 10,flex: 1, height: 250}}>
                 <View style={{ flex: 0.7, flexDirection: 'row' }}>
                     <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1}}>
-                        <Image style={styles.buttonStatusImage} source={require('../assets/img/profilePicture.jpg')} />
+                        <Image style={styles.buttonStatusImage} source={profilePicture} />
                     </View>
                     <View style={{ flex: 3.5, justifyContent: 'center' }}>
                         <View style={{ flex: 1, justifyContent: 'center', }}>
@@ -353,7 +354,7 @@ class PostCard extends Component {
                 <View style={{ flex: 1}}>
                     <View style={{flex: 1,flexDirection: 'row', justifyContent: 'space-between'}}>
                         <View style={{ flexDirection: 'row'}}>
-                            <Image style={{ height: 20, width: 20 }} source={require('../assets/icon/like-emot.png')} />
+                            <Image style={{ height: 20, width: 20 }} source={likeEmoticon} />
                             <Text> Jokowi dan 13 Lainnya</Text>
                         </View>
                         <View>

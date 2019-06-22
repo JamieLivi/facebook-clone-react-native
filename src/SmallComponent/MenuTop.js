@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, Image, View, TouchableOpacity } from 'react-native';
 
+const cameraLightIcon = require('../assets/icon/camera-light.png')
+const searchIcon = require('../assets/icon/search.png')
+const drinkIcon = require('../assets/icon/drink.png')
+const homeIcon = require('../assets/icon/home.png')
+const groupIcon = require('../assets/icon/group.png')
+const videoIcon = require('../assets/icon/videos.png')
+const profileActiveIcon = require('../assets/icon/profile-active.png')
+const notificationIcon = require('../assets/icon/notification.png')
+const moreIcon = require('../assets/icon/more.png')
+
 export default class MenuTop extends Component {
     render() {
         return (
@@ -11,42 +21,42 @@ export default class MenuTop extends Component {
 
                         <View style={styles.searchBarItem}>
                             <TouchableOpacity>
-                                <Image style={styles.logo} source={require('../android/app/src/main/assets/icons/camera.png')} />
+                                <Image style={styles.logo} source={cameraLightIcon} />
                             </TouchableOpacity>
                         </View>
 
                         <View style={styles.searchBarItemInput}>
                             <View style={styles.logoSearch}>
-                                <Image style={styles.logoSearchImage} source={require('../android/app/src/main/assets/icons/search.png')} />
+                                <Image style={styles.logoSearchImage} source={searchIcon} />
                             </View>
                             <TextInput style={styles.searchBarInput} placeholderTextColor="#a1b3d9" placeholder='Cari' />
                         </View>
                         <View style={styles.searchBarItem}>
-                            <Image style={styles.logo} source={require('../android/app/src/main/assets/icons/ngopi.png')} />
+                            <Image style={styles.logo} source={drinkIcon} />
                         </View>
                     </View>
 
                     {/* Menu Bar */}
-                    <View style={styles.menuBar}>
+                    {/* <View style={styles.menuBar}>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/news.png')} />
+                            <Image style={styles.logoMenuBar} source={homeIcon} />
                         </View>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/group.png')} />
+                            <Image style={styles.logoMenuBar} source={groupIcon} />
                         </View>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/video.png')} />
+                            <Image style={styles.logoMenuBar} source={videoIcon} />
                         </View>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/profile-active.png')} />
+                            <Image style={styles.logoMenuBar} source={profileActiveIcon} />
                         </View>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/notif.png')} />
+                            <Image style={styles.logoMenuBar} source={notificationIcon} />
                         </View>
                         <View style={styles.menuBarItem}>
-                            <Image style={styles.logoMenuBar} source={require('../android/app/src/main/assets/icons/hamburger.png')} />
+                            <Image style={styles.logoMenuBar} source={moreIcon} />
                         </View>
-                    </View>
+                    </View> */}
                 </View>
             </View>
 
@@ -61,7 +71,6 @@ const styles = StyleSheet.create({
     header: {
         backgroundColor: '#4267b2ff',
         height: 100,
-        // flexDirection: 'column', 
         marginHorizontal: 0,
         flex: 1
     },
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row'
     },
-    menuBarItem: { flex: 1, alignItems: 'center'},
+    menuBarItem: { flex: 1, alignItems: 'center' },
     logo: {
         width: 30,
         height: 30,

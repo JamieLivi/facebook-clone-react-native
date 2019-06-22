@@ -9,13 +9,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, Image, View, Alert } from 'react-native';
 import { Container, Content, Form, Item, Input, Button, StyleProvider } from 'native-base';
-import getTheme from '../native-base-theme/components';
-import material from '../native-base-theme/variables/material';
+import getTheme from '../../native-base-theme/components';
+import material from '../../native-base-theme/variables/material';
 
 // variable initialization
 const images = {
-	image1: require('../android/app/src/main/assets/img/loginhead.png'),
-	image2: require('../android/app/src/main/assets/img/facebookLogo.png')
+	image1: require('../assets/img/loginhead.png'),
+	image2: require('../assets/img/facebookLogo.png')
 }
 
 onChangePicture = () => {
@@ -48,7 +48,6 @@ export default class Login extends Component {
 						<View style={styles.header}>
 							<Image
 								style={styles.logo}
-								// resizeMode="contain"
 								source={this.state.image}
 							/>
 							<Text style={{ textAlign: 'center', marginTop: 5 }}>Bahasa Indonesia • English • More..</Text>
@@ -64,7 +63,7 @@ export default class Login extends Component {
 								</Item>
 							</Form>
 							<Button block style={styles.buttonLogin} onPress={() => {
-								this.props.navigation.navigate('Profile')
+								this.props.navigation.navigate('MainScreen')
 							}}>
 								<Text style={{ color: '#fff' }}>Log In</Text>
 							</Button>
@@ -105,7 +104,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	logo: {
-		height: 200,
+		height: 165,
 		width: '100%'
 	},
 	body: {
@@ -152,7 +151,6 @@ const styles = StyleSheet.create({
 	wrapperButtonSignup: {
 		alignItems: 'center',
 		justifyContent: 'center',
-		flex: 1,
 		flexDirection: 'row'
 	},
 	buttonSignup: {

@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
-import ThumbnailPhoto from '../small/ThumbnailPhoto';
+import ThumbnailPhoto from './ThumbnailPhoto';
 
 class Post extends Component {
-    img = {
-        'saitama': require('../../assets/images/526887.jpg'),
-        'sonic': require('../../assets/images/anjay.jpg'),
-        'fang': require('../../assets/images/minion.jpg'),
-        'king': require('../../assets/images/op.jpg'),
-    }
-
+   
     render() {
         return (
             <View style={styles.container}>
