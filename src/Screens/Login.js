@@ -1,41 +1,68 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, Image, View, Alert } from 'react-native';
 import { Container, Content, Form, Item, Input, Button, StyleProvider } from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
+import axios from 'axios';
+import deviceStorage from '../SmallComponent/deviceStorage'
+
 
 // variable initialization
 const images = {
 	image1: require('../assets/img/loginhead.png'),
-	image2: require('../assets/img/facebookLogo.png')
+	image2: require('../assets/img/loginhead-white.png')
 }
-
-onChangePicture = () => {
-	// this.setState({
-	// 	image: images.image2
-	// })
-	Alert.alert(
-		'Maaf Belum Bisa Apa2'
-	)
-}
-
 
 export default class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			username: 'rahadian.permana',
-			password: '12345678',
-			image : images.image1
+			username: '',
+			jwt: null,
+			password: '',
+			error: '',
+			loading: false,
+			image: images.image1
 		}
+	}
+
+	onChangePictureFocus = () => {
+		this.setState({
+			image: images.image2
+		})
+	}
+	onChangePictureBlur = () => {
+		this.setState({
+			image: images.image1
+		})
+	}
+
+	handleUserLogin=(e) => {
+		const { username, password } = this.state
+		axios.post("http://192.168.0.27:5000/login", {
+			username, password
+		})
+			.then(response => {
+				let jwt = response.data.token
+				this.setState({ error: '', loading: true, jwt: jwt })
+				if (jwt !== null) {
+					this.setState({
+						loading: false
+					})
+					this.props.navigation.navigate('MainScreen')
+				} else {
+					e.preventDefault()
+				}
+				deviceStorage.saveItem("token", response.data.token)
+			})
+			.catch(err => {
+				this.setState({
+					error: 'Login Failed..',
+					loading: false
+				})
+				alert('Login Failed')
+			})
 	}
 
 	render() {
@@ -49,22 +76,27 @@ export default class Login extends Component {
 							<Image
 								style={styles.logo}
 								source={this.state.image}
+								resizeMode='cover'
 							/>
 							<Text style={{ textAlign: 'center', marginTop: 5 }}>Bahasa Indonesia • English • More..</Text>
 						</View>
 						<View style={styles.body}>
 
-							<Form >
-								<Item onFocus={this.onChangePicture} fixedLabel style={styles.item}>
-									<Input onFocus={this.onChangePicture} placeholder="Email or Phone" value={this.state.username} />
+							<Form onFocus={this.onChangePictureFocus}>
+								<Item fixedLabel style={styles.item}>
+									<Input onChangeText={(username) => { this.setState({ username }) }}
+										placeholder="Email or Phone"
+										onBlur={this.onChangePictureFocus}
+										value={this.state.username} />
 								</Item>
 								<Item fixedLabel style={styles.item}>
-									<Input secureTextEntry={true} placeholder="Password" value={this.state.password} />
+									<Input onBlur={this.onChangePictureBlur}
+										onChangeText={(password) => { this.setState({ password }) }}
+										secureTextEntry={true}
+										placeholder="Password" value={this.state.password} />
 								</Item>
 							</Form>
-							<Button block style={styles.buttonLogin} onPress={() => {
-								this.props.navigation.navigate('MainScreen')
-							}}>
+							<Button block style={styles.buttonLogin} onPress={this.handleUserLogin}>
 								<Text style={{ color: '#fff' }}>Log In</Text>
 							</Button>
 							<Text style={styles.forgotPass}>Forgot Password ?</Text>

@@ -3,12 +3,49 @@ import { createStackNavigator, createAppContainer, createMaterialTopTabNavigator
 import Login from '../Screens/Login';
 import Home from '../Screens/Home';
 import Profile from '../Screens/Profile';
+import More from '../Screens/More';
 import TabIcon from '../SmallComponent/TabIcon';
+import MenuTop from '../SmallComponent/MenuTop';
 import React, { Component } from 'react';
-const homeIcon = require('../assets/icon/home.png')
+import FriendRequest from "../Screens/FriendRequest";
 
-const HomeTabIcon = ( ) => (
-    <TabIcon icon={homeIcon} />
+//Icons Courtesy By : Chandra Pack not Aqil Pack
+const homeIcon = require('../assets/icon/home.png')
+const homeActiveIcon = require('../assets/icon/home-active.png')
+const friendIcon = require('../assets/icon/friend-request.png')
+const friendActiveIcon = require('../assets/icon/friends-active.png')
+const groupIcon = require('../assets/icon/group.png')
+const groupActiveIcon = require('../assets/icon/group-active.png')
+const profileIcon = require('../assets/icon/profile.png')
+const profileActiveIcon = require('../assets/icon/profile-active.png')
+const notifIcon = require('../assets/icon/notification.png')
+const notifActiveIcon = require('../assets/icon/notification-active.png')
+const moreIcon = require('../assets/icon/more.png')
+const moreActiveIcon = require('../assets/icon/more-active.png')
+
+const HomeTabIcon = ({focused} ) => (
+    <TabIcon icon={focused ? homeActiveIcon : homeIcon} />
+);
+const FriendTabIcon = ({focused}) => (
+    <TabIcon icon={focused ? friendActiveIcon : friendIcon} />
+);
+const GroupTabIcon = ({focused}) => (
+    <TabIcon icon={focused ? groupActiveIcon : groupIcon} />
+);
+const ProfileTabIcon = ({focused}) => (
+    <TabIcon icon={focused ? profileActiveIcon :profileIcon} />
+);
+const NotifTabIcon = ({focused}) => (
+    <TabIcon icon={focused ? notifActiveIcon : notifIcon} />
+);
+const MoreTabIcon = ({focused}) => (
+    <TabIcon icon={focused ? moreActiveIcon:moreIcon} />
+);
+// const SearchBar = ( ) => (
+//     <Testo />
+// );
+const SearchBar = ( ) => (
+    <MenuTop />
 );
 
 const MenuTopTabNavigation = createMaterialTopTabNavigator(
@@ -21,43 +58,45 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
         },
 
         FriendScreen: {
-            screen: Profile,
-            navigationOptions: { header: null, title: 'Friend' }
+            screen: FriendRequest,
+            navigationOptions: {
+                tabBarIcon: FriendTabIcon
+            }
         },
         GroupScreen: {
             screen: Home,
-            navigationOptions: { header: null, title: 'Group' }
+            navigationOptions: {
+                tabBarIcon: GroupTabIcon
+            }
         },
 
         ProfileScreen: {
             screen: Profile,
-            navigationOptions: { header: null, title: 'Profile' }
+            navigationOptions: {
+                tabBarIcon: ProfileTabIcon
+            }
         },
         NotificationScreen: {
             screen: Profile,
-            navigationOptions: { header: null, title: 'Notification' }
+            navigationOptions: {
+                tabBarIcon: NotifTabIcon
+            }
         },
         MoreScreen: {
-            screen: Profile,
-            navigationOptions: { header: null, title: 'More' }
+            screen: More,
+            navigationOptions: {
+                tabBarIcon: MoreTabIcon
+            }
         },
        
     },
     {
         tabBarPosition: 'top',
         tabBarOptions: {
-            // activeTintColor: AppStyles.colors.accentColor,
-            // inactiveTintColor: AppStyles.colors.inactiveGreyColor,
-            // pressColor: AppStyles.colors.lightGreyCOlor,
             showLabel : false,
             showIcon : true,
-            labelStyle: {
-                fontWeight: 'bold',
-                // fontSize: Platform.OS === 'ios' ? 11 : 12,
-                // fontFamily: AppStyles.fonts.FONT_MEDIUM
-            },
             indicatorStyle: {
-                // backgroundColor: AppStyles.colors.accentColor
+                backgroundColor: 'transparent'
             },
             style: {
                 backgroundColor: '#fff'
@@ -74,13 +113,18 @@ const AppNavigator = createStackNavigator(
         },
         MainScreen: {
             screen: MenuTopTabNavigation,
-            navigationOptions: { gesturesEnabled: false, header: null }
+            navigationOptions: { gesturesEnabled: false }
         },
     },
     {
         initialRouteName: "LoginScreen",
         defaultNavigationOptions: {
-            header: null
+            header: SearchBar,
+            headerStyle: {
+                backgroundColor: '#FF5733',
+                flex: 0.2
+            },
+
         }
     }
 );

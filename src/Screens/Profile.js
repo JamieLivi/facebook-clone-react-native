@@ -1,8 +1,10 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, ScrollView, Image, ImageBackground, View, TouchableOpacity, Alert, Button } from 'react-native';
-import MenuTop from '../SmallComponent/MenuTop';
+
 import { Icon } from 'react-native-elements'
+import ProfileStatusList from '../SmallComponent/ProfileStatusList.js';
+import PostCard from '../SmallComponent/PostCard'
 
 const showAlert = () => {
     Alert.alert(
@@ -13,7 +15,6 @@ const showAlert = () => {
 const users = require('../dummyData/user.json')
 const friends = require('../dummyData/friendList.json')
 const profilePicture = require('../assets/img/profilePicture.jpg');
-const likeEmoticon = require('../assets/icon/like-emot.png')
 
 export default class Profile extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class Profile extends Component {
                         </View>
                         <View style={styles.profileInformationContainer}>
                             <Text style={[styles.profileInformation, styles.fontBold22]} >
-                                Rahadian Permana
+                                Lord Rahadian of Westeros
                             </Text>
                             <Text style={styles.profileInformation}>Ini Status Saya, Bukan Status Anda, Atau Mereka</Text>
                         </View>
@@ -62,7 +63,7 @@ export default class Profile extends Component {
                                 color='#1e1f21' />
                         </View>
                         <View style={styles.profileStatusWrapper}>
-                            <ProfileStatus />
+                            <ProfileStatusList />
                         </View>
                         <View style={styles.groupImageItemWrapper}>
                             {users.map((user, key) => {
@@ -274,122 +275,8 @@ class ButtonCircleText extends Component {
     }
 }
 
-class ProfileStatus extends Component {
-    render() {
-        return (
-            <View style={styles.profileStatusContainer}>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='home' type='font-awesome' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        Lives in <Text style={styles.profileStatusItemTextBold}>Bandung City</Text>
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='place' type='material' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        From <Text style={styles.profileStatusItemTextBold}>Daerah Khusus Ibu Kota Jakarta</Text>
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='heart' type='material-community' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        In Relationship with <Text style={styles.profileStatusItemTextBold}>Him Self</Text>
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='id-card' type='font-awesome' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        Followed By <Text style={styles.profileStatusItemTextBold}>13M People</Text>
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='instagram' type='material-community' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        itsmerahadian
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='github-circle' type='material-community' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        rahadian347
-                    </Text>
-                </View>
-                <View style={styles.profileStatusItem}>
-                    <Icon name='dots-horizontal' type='material-community' style={styles.justifyContent} />
-                    <Text style={styles.profileStatusItemText} >
-                        See Information About You
-                    </Text>
-                </View>
-            </View>
 
-        )
-    }
-}
 
-class PostCard extends Component {
-    render() {
-        return (
-            <View style={{ marginHorizontal: 10,flex: 1, height: 250}}>
-                <View style={{ flex: 0.7, flexDirection: 'row' }}>
-                    <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1}}>
-                        <Image style={styles.buttonStatusImage} source={profilePicture} />
-                    </View>
-                    <View style={{ flex: 3.5, justifyContent: 'center' }}>
-                        <View style={{ flex: 1, justifyContent: 'center', }}>
-                            <Text style={styles.fontBoldStandard}>Rahadian Permana</Text>
-                        </View>
-                        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                            <Text>Just Now • </Text>
-                            <Icon name='lock' size={20} type='material-community' />
-                        </View>
-                    </View>
-                    <View style={{ flex: 1}}>
-                        <Icon name='dots-horizontal' size={23} type='material-community' />
-                    </View>
-                </View>
-                <View style={{
-                    borderColor: '#cecfd6',borderBottomWidth: 1,marginBottom: 5,flex: 1, paddingHorizontal: 5, justifyContent: 'center' }}>
-                    <Text style={styles.font22}>Testing status</Text>
-                </View>
-                <View style={{ flex: 1}}>
-                    <View style={{flex: 1,flexDirection: 'row', justifyContent: 'space-between'}}>
-                        <View style={{ flexDirection: 'row'}}>
-                            <Image style={{ height: 20, width: 20 }} source={likeEmoticon} />
-                            <Text> Jokowi dan 13 Lainnya</Text>
-                        </View>
-                        <View>
-                            <Text>2 Komentar</Text>
-                        </View>
-                    </View>
-                    <View style={{ flex: 1,flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Icon
-                                color='#636973'
-                                name='thumb-up-outline'
-                                type='material-community' />
-                            <Text> Suka</Text>
-                        </View>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Icon
-                                color='#636973'
-                                name='message-outline'
-                                type='material-community' />
-                            <Text> Komentar</Text>
-                        </View>
-                        <View style={{ flexDirection: 'row' }}>
-                            <Icon
-                                color='#636973'
-                                name='share'
-                                type='font-awesome' />
-                            <Text> Bagikan</Text>
-                        </View>
-                    </View>
-                </View>
-
-            </View>
-        )
-    }
-}
 
 
 
@@ -481,23 +368,6 @@ const styles = StyleSheet.create({
     },
     profileStatusWrapper: {
         flex: 1, marginHorizontal: 15
-    },
-    profileStatusContainer: {
-        alignItems: 'flex-start',
-        flex: 1
-    },
-    profileStatusItem: {
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        marginBottom: 5,
-    },
-    profileStatusItemText: {
-        marginHorizontal: 10,
-        fontSize: 20,
-    },
-    profileStatusItemTextBold: {
-        fontWeight: '500'
     },
     justifyContent: {
         justifyContent: 'center'

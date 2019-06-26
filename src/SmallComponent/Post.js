@@ -3,13 +3,17 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ThumbnailPhoto from './ThumbnailPhoto';
 
+const likeReaction = require('../assets/icon/reaction-like.png');
+const loveReaction = require('../assets/icon/reaction-love.png');
+const wowReaction = require('../assets/icon/reaction-wow.png');
+
 class Post extends Component {
    
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.wrapperTopPart}>
-                    <ThumbnailPhoto style={styles.wrapperPhotoProfile} />
+                    <ThumbnailPhoto characterImageThumb={this.props.data.characterImageThumb} style={styles.wrapperPhotoProfile} />
 
                     <View style={styles.wrapperProfileName}>
                         <Text style={styles.profileName}>{this.props.data.name}</Text>
@@ -29,7 +33,7 @@ class Post extends Component {
                                 {
                                     this.props.data.like && this.props.data.like != 0 ?
                                         <View style={styles.wrapperIcon}>
-                                            <Icon size={15} color="#fff" name='thumb-up' type='material-community' />
+                                            <Image source={likeReaction} style={{ height: 20, width: 20 }} />
                                         </View>
                                         :
                                         <View></View>
@@ -38,7 +42,8 @@ class Post extends Component {
                                 {
                                     this.props.data.love ?
                                         <View style={[{ marginLeft: -8 }, styles.wrapperIcon]}>
-                                            <Icon size={15} color="#ff0000" name='heart' type='material-community' />
+                                            <Image source={loveReaction} style={{height: 20, width :20}} />
+                                            <Image source={wowReaction} style={{height: 20, width :20}} />
                                         </View>
                                         :
                                         <View></View>
@@ -95,11 +100,11 @@ const styles = StyleSheet.create({
     wrapperInfoPart: { flex: 1, flexDirection: 'row', justifyContent: 'space-between' },
     infoPart: { flex: 1, flexDirection: 'row' },
     wrapperIcon: {
-        backgroundColor: '#2196f3',
+        backgroundColor: 'transparent',
         padding: 3,
         borderRadius: 50,
         flexDirection: 'row',
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor: '#fff'
     },
     infoText: { marginLeft: 5, paddingTop: 3 },

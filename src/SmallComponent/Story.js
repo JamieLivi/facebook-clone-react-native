@@ -6,7 +6,7 @@ export default class Story extends Component {
     render() {
         return (
             <View style={styles.wrapperStory}>
-                <Image source={{uri: this.props.e.picture.large}} style={styles.imageStory} />
+                <Image source={{uri: this.props.e.characterImageFull}} style={styles.imageStory} />
                 <View style={styles.wrapperProfilePicture}>
                     <Text style={styles.addStory}>+</Text>
                 </View>

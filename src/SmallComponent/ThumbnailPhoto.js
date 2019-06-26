@@ -5,7 +5,7 @@ class ThumbnailPhoto extends Component {
     render() {
         return (
             <View style={this.props.style}>
-                <Image source={require("../assets/img/profilePicture.jpg")} style={styles.thumb} />
+                <Image source={{uri : this.props.characterImageThumb}} style={styles.thumb} />
             </View>
         )
     }
