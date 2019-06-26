@@ -12,11 +12,7 @@ const deviceStorage = {
     //get data from async storage
     async getJwt () {
         try {
-            await AsyncStorage.getItem('token')
-                .then(value => {
-                    return value
-                })
-            
+            await AsyncStorage.getItem('token')            
 
         } catch(error) {console.log('AsyncStorage Error: ' + error.message)}
         return value

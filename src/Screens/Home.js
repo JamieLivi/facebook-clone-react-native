@@ -7,7 +7,17 @@ import data from '../dummyData/status.json';
 
 const attachIcon = require('../assets/icon/attach.png')
 
+import deviceStorage from '../SmallComponent/deviceStorage'
+
 class Home extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            jwt: '',
+            data: []
+        }
+    }
     render() {
         return (
             <ScrollView style={{ backgroundColor: '#dadee1' }}>
@@ -27,7 +37,7 @@ class Home extends Component {
                     <View style={{justifyContent: 'space-around', flex: 1, flexDirection: 'row', backgroundColor: '#fff', marginVertical: 15, height: 220 }}>
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ padding: 20 }}>
                             {
-                                data.slice(0,6).map((e,i) => <Story e={e} key={i} />)
+                                data.map((e,i) => <Story e={e} key={i} />)
                             }
                         </ScrollView>
                     </View>

@@ -1,11 +1,13 @@
 
-import { createStackNavigator, createAppContainer, createMaterialTopTabNavigator } from "react-navigation";
+import { createStackNavigator, createAppContainer, createMaterialTopTabNavigator, createSwitchNavigator } from "react-navigation";
 import Login from '../Screens/Login';
 import Home from '../Screens/Home';
 import Profile from '../Screens/Profile';
 import More from '../Screens/More';
+import Notification from '../Screens/Notification';
 import TabIcon from '../SmallComponent/TabIcon';
 import MenuTop from '../SmallComponent/MenuTop';
+import AuthLoading from '../SmallComponent/AuthLoading'
 import React, { Component } from 'react';
 import FriendRequest from "../Screens/FriendRequest";
 
@@ -23,28 +25,28 @@ const notifActiveIcon = require('../assets/icon/notification-active.png')
 const moreIcon = require('../assets/icon/more.png')
 const moreActiveIcon = require('../assets/icon/more-active.png')
 
-const HomeTabIcon = ({focused} ) => (
+const HomeTabIcon = ({ focused }) => (
     <TabIcon icon={focused ? homeActiveIcon : homeIcon} />
 );
-const FriendTabIcon = ({focused}) => (
+const FriendTabIcon = ({ focused }) => (
     <TabIcon icon={focused ? friendActiveIcon : friendIcon} />
 );
-const GroupTabIcon = ({focused}) => (
+const GroupTabIcon = ({ focused }) => (
     <TabIcon icon={focused ? groupActiveIcon : groupIcon} />
 );
-const ProfileTabIcon = ({focused}) => (
-    <TabIcon icon={focused ? profileActiveIcon :profileIcon} />
+const ProfileTabIcon = ({ focused }) => (
+    <TabIcon icon={focused ? profileActiveIcon : profileIcon} />
 );
-const NotifTabIcon = ({focused}) => (
+const NotifTabIcon = ({ focused }) => (
     <TabIcon icon={focused ? notifActiveIcon : notifIcon} />
 );
-const MoreTabIcon = ({focused}) => (
-    <TabIcon icon={focused ? moreActiveIcon:moreIcon} />
+const MoreTabIcon = ({ focused }) => (
+    <TabIcon icon={focused ? moreActiveIcon : moreIcon} />
 );
 // const SearchBar = ( ) => (
 //     <Testo />
 // );
-const SearchBar = ( ) => (
+const SearchBar = () => (
     <MenuTop />
 );
 
@@ -77,7 +79,7 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
             }
         },
         NotificationScreen: {
-            screen: Profile,
+            screen: Notification,
             navigationOptions: {
                 tabBarIcon: NotifTabIcon
             }
@@ -88,13 +90,13 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
                 tabBarIcon: MoreTabIcon
             }
         },
-       
+
     },
     {
         tabBarPosition: 'top',
         tabBarOptions: {
-            showLabel : false,
-            showIcon : true,
+            showLabel: false,
+            showIcon: true,
             indicatorStyle: {
                 backgroundColor: 'transparent'
             },
@@ -105,19 +107,15 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
     }
 )
 
-const AppNavigator = createStackNavigator(
+const AppStack = createStackNavigator(
     {
-        LoginScreen: {
-            screen: Login,
-            navigationOptions: { gesturesEnabled: false, header: null }
-        },
         MainScreen: {
             screen: MenuTopTabNavigation,
             navigationOptions: { gesturesEnabled: false }
         },
     },
     {
-        initialRouteName: "LoginScreen",
+        initialRouteName: "MainScreen",
         defaultNavigationOptions: {
             header: SearchBar,
             headerStyle: {
@@ -129,8 +127,33 @@ const AppNavigator = createStackNavigator(
     }
 );
 
+const AuthStack = createStackNavigator(
+    {
+        LoginScreen: {
+            screen: Login,
+            navigationOptions: { gesturesEnabled: false, header: null }
+        }
+    },
+    {
+        defaultNavigationOptions: {
+            header: null
+        }
+    }
+)
 
 
-const AppContainer = createAppContainer(AppNavigator);
+
+const AppContainer = createAppContainer(createSwitchNavigator(
+    {
+        AuthLoading: AuthLoading,
+        Auth: AuthStack,
+        App: AppStack,
+    },
+    {
+
+        initialRouteName: 'AuthLoading',
+        resetOnBlur: true,
+    }
+));
 
 export default AppContainer;

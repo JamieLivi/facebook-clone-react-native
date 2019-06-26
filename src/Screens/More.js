@@ -1,13 +1,35 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 
-export default class More extends Component {
+
+import React, { Component } from 'react'
+import { Button, View, AsyncStorage, StyleSheet } from 'react-native'
+
+
+class More extends Component {
+    constructor() {
+        super();
+    }
+    _signOutAsync = async () => {
+        await AsyncStorage.clear();
+        this.props.navigation.navigate('Auth');
+    };
 
     render() {
         return (
-            <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-                <Text>This is More </Text>
+            <View style={[styles.container]}>
+                <Button title="Sign me Out :)" onPress={this._signOutAsync} />
             </View>
+
         );
     }
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    }
+})
+
+
+export default More;
