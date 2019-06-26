@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ThumbnailPhoto from './ThumbnailPhoto';
+// import moment from 'moment'
 
 const likeReaction = require('../assets/icon/reaction-like.png');
 const loveReaction = require('../assets/icon/reaction-love.png');
 const wowReaction = require('../assets/icon/reaction-wow.png');
 
 class Post extends Component {
-   
+
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.wrapperTopPart}>
-                    <ThumbnailPhoto characterImageThumb={this.props.data.characterImageThumb} style={styles.wrapperPhotoProfile} />
+                    <ThumbnailPhoto characterImageThumb={this.props.data.user.profile_img_url} style={styles.wrapperPhotoProfile} />
 
                     <View style={styles.wrapperProfileName}>
-                        <Text style={styles.profileName}>{this.props.data.name}</Text>
-                        <Text style={styles.timePost}>{this.props.data.minute}</Text>
+                        <Text style={styles.profileName}>{this.props.data.user.fullname}</Text>
+                        <Text style={styles.timePost}>{this.props.data.createdAt}</Text>
                     </View>
 
                     <View style={styles.btnMore}>
@@ -26,37 +27,32 @@ class Post extends Component {
                 </View>
 
                 <View style={styles.wrapperMiddlePart}>
-                    <View style={styles.wrapperPost}>
-                        <Text style={styles.postText}>{this.props.data.text}</Text>
-                        <View style={styles.wrapperInfoPart}>
-                            <View style={[styles.InfoPart, { flexDirection: 'row' }]}>
-                                {
-                                    this.props.data.like && this.props.data.like != 0 ?
-                                        <View style={styles.wrapperIcon}>
-                                            <Image source={likeReaction} style={{ height: 20, width: 20 }} />
-                                        </View>
-                                        :
-                                        <View></View>
-                                }
 
-                                {
-                                    this.props.data.love ?
-                                        <View style={[{ marginLeft: -8 }, styles.wrapperIcon]}>
-                                            <Image source={loveReaction} style={{height: 20, width :20}} />
-                                            <Image source={wowReaction} style={{height: 20, width :20}} />
-                                        </View>
-                                        :
-                                        <View></View>
-                                }
+                    <View style={[styles.wrapperPost, { flex: 1 }]}>
+                        <View style={{flex: 1, flexDirection: 'row', width: '100%' }}>
 
-                                <Text style={styles.infoText}>{this.props.data.like}
-                                    {this.props.data.like && !this.props.data.love ? " orang menyukai" : ""}</Text>
+                            <Text style={[styles.postText, {flex: 1, flexDirection: 'row' }]}>{this.props.data.content}</Text>
+                        </View>
+
+                        <View style={[styles.wrapperInfoPart, { flex: 3, flexDirection: 'row' }]}>
+
+                            <View style={[styles.InfoPart, { flexDirection: 'row'}]}>
+                                <View style={styles.wrapperIcon}>
+                                    <Image source={likeReaction} style={{ height: 20, width: 20 }} />
+                                </View>
+                                <View style={[{ marginLeft: -8 }, styles.wrapperIcon]}>
+                                    <Image source={loveReaction} style={{ height: 20, width: 20 }} />
+                                    <Image source={wowReaction} style={{ height: 20, width: 20 }} />
+                                </View>
+                                <Text style={styles.infoText}>
+                                    5 orang menyukai</Text>
                             </View>
 
-                            <View style={styles.wrapperComment}>
-                                <Text style={styles.comment}>
-                                    {this.props.data.comments} {this.props.data.comments > 1 ? "Comments" : "Comment"}</Text>
+                            <View style={[styles.wrapperComment, { justifyContent: 'flex-end',alignItems: 'center', flex: 1, flexDirection: 'row' }]}>
+                                <Text style={[styles.comment, { paddingBottom: 6,backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }]}>
+                                    5 Comments</Text>
                             </View>
+
                         </View>
                     </View>
                 </View>
@@ -93,10 +89,11 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         borderBottomWidth: 2,
         borderBottomColor: '#ebebeb',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        flex: 1
     },
     wrapperPost: { flex: 1 },
-    postText: { fontSize: 15, color: '#000', marginBottom: 15 },
+    postText: { fontSize: 15, color: '#000', marginBottom: 15, flexDirection: 'row' },
     wrapperInfoPart: { flex: 1, flexDirection: 'row', justifyContent: 'space-between' },
     infoPart: { flex: 1, flexDirection: 'row' },
     wrapperIcon: {
@@ -108,7 +105,7 @@ const styles = StyleSheet.create({
         borderColor: '#fff'
     },
     infoText: { marginLeft: 5, paddingTop: 3 },
-    wrapperComment: { flex: 1, alignItems: 'flex-end' },
+    wrapperComment: {},
     comment: { marginTop: 5 },
     wrapperButtonAction: { flex: 1, flexDirection: 'row', padding: 10 },
     wrapperButtonLike: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },

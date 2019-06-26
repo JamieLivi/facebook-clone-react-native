@@ -152,7 +152,7 @@ const AppContainer = createAppContainer(createSwitchNavigator(
     {
 
         initialRouteName: 'AuthLoading',
-        resetOnBlur: true,
+        resetOnBlur: false,
     }
 ));
 

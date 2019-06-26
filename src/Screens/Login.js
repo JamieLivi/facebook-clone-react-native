@@ -45,6 +45,7 @@ export default class Login extends Component {
 		})
 			.then(response => {
 				let jwt = response.data.token
+				let userData = JSON.stringify(response.data.data)
 				this.setState({ error: '', loading: true, jwt: jwt })
 				if (jwt !== null) {
 					this.setState({
@@ -55,6 +56,8 @@ export default class Login extends Component {
 					e.preventDefault()
 				}
 				deviceStorage.saveItem("token", response.data.token)
+				deviceStorage.saveItem("user", userData)
+			
 			})
 			.catch(err => {
 				this.setState({
