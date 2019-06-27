@@ -56,15 +56,17 @@ class Home extends Component {
     }
 
     render() {
-        let { jwt, posts, fullname, user_id, profile_image } = this.state
+        let { jwt, posts, user_id, profile_image } = this.state
         return (
             <ScrollView style={{ backgroundColor: '#dadee1' }}>
                 <View style={{ flex: 1, backgroundColor: '#dadee1' }}>
 
                     <View style={{ flex: 1, backgroundColor: '#fff', marginTop: 2, flexDirection: 'row', height: 70, padding: 15, justifyContent:'space-around' ,backgroundColor: '#fff' }}>
                         <ThumbnailPhoto characterImageThumb={profile_image} style={{ width: 40 }} />
-                        <TouchableOpacity style={{ flex: 1 }}onPress={() => { this.props.navigation.navigate('CreatePostScreen', {
-                            user_id, jwt
+                        <TouchableOpacity style={{ flex: 1 }}
+                            // passing parameter to createpost page
+                            onPress={() => { this.props.navigation.navigate('CreatePostScreen', {
+                            user_id, jwt, type: 'newpost'
                         }) }} >
                             <View style={{ alignItems:'center',justifyContent:'center',flex: 1, padding: 2, marginLeft: 7,width: 250, height: 40 }}>
                                 <Text style={{ paddingTop: 7,paddingLeft:20,height: 35 ,width: '100%' ,borderWidth: 1, borderRadius: 20, borderColor: '#959ca6' }}>What's on your mind?</Text> 

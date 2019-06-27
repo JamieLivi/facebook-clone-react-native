@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View, Modal, TouchableHighlight, Alert, Button, ScrollView } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import ThumbnailPhoto from './ThumbnailPhoto'
 import { Icon } from 'react-native-elements'
 import { withNavigation } from 'react-navigation'
 import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
+import axios from 'axios'
 
 class CreatePost extends Component {
 
@@ -17,15 +18,38 @@ class CreatePost extends Component {
         }
     }
 
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
+    handlePost = (user_id, jwt, type) => {
+        if (user_id || jwt || type !== null) {
+            const data = {
+                content: this.state.content,
+                user_id: user_id
+            }
+            const headers = {
+                'Authorization': 'Bearer ' + jwt
+            };
+            axios.post("http://192.168.0.27:5000/posts", data, {
+                headers: headers
+            })
+                .then(response => {
+
+                    this.props.navigation.navigate('MainScreen')
+
+
+                })
+                .catch(err => {
+                    console.log("send data failed")
+                    alert('post failed')
+                })
+        }
     }
+
 
     render() {
         const { navigation } = this.props;
         const user_id = navigation.getParam('user_id', 'NO-ID');
+        const type = navigation.getParam('type', 'No - type');
         const jwt = navigation.getParam('jwt', 'No - Token');
-        console.log(user_id + " ============= " + jwt)
+        console.log(user_id + " ============= " + jwt + " ============= " + type)
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
@@ -38,7 +62,7 @@ class CreatePost extends Component {
                                 color='#fff'
                                 onPress={() => { this.props.navigation.navigate('MainScreen') }} />
                             <Text style={{ flex: 1, marginLeft: 20, fontSize: 20, color: '#fff' }}>Create Post</Text>
-                            <TouchableOpacity style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                            <TouchableOpacity onPress={() => {this.handlePost(user_id,jwt,type)}} style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }}>
                                 <Text style={{ alignSelf: 'center', fontSize: 20, color: 'white' }}>POST</Text>
                             </TouchableOpacity>
 
@@ -92,6 +116,7 @@ class CreatePost extends Component {
                     <View style={{ height: 300 }}>
                         <TextInput style={{ paddingLeft: 15, fontSize: 25, color: '#151515' }}
                             placeholderTextColor="#bdc1c5" multiline={true}
+                            onChangeText={(content) => this.setState({ content })}
                             placeholder="What's On Your Mind ?">
                         </TextInput>
                     </View>
