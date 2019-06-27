@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Modal } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ThumbnailPhoto from './ThumbnailPhoto';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import PostModal from './PostModal'
 // import moment from 'moment'
 
 const likeReaction = require('../assets/icon/reaction-like.png');
@@ -10,9 +12,71 @@ const wowReaction = require('../assets/icon/reaction-wow.png');
 
 class Post extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            modalVisible: false,
+        };
+    }
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
     render() {
         return (
             <View style={styles.container}>
+
+                {/* Modal EDIT DELETE POST */}
+                {/* <PostModal visible={this.state.modalVisible} /> */}
+               
+                <View style={{ marginTop: 10 }}>
+                    <Modal
+
+                        animationType="slide"
+                        transparent={false}
+                        visible={this.state.visible}
+                        onRequestClose={() => {
+                            this.setModalVisible(!this.state.visible)
+                        }}>
+
+
+                        <View style={{ flex: 1, backgroundColor: '#orange' }}>
+                            <View style={{ paddingLeft: 20, paddingTop: 10, backgroundColor: 'white', marginTop: 180, height: 800 }}>
+
+                                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image style={{ height: 30, width: 30, marginRight: 10 }} source={require('../assets/icon/postIcon/save.png')} />
+                                        <View>
+                                            <Text style={{ fontSize: 20 }}>Save Post</Text>
+                                            <Text>Add this to your saved item</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginTop: 9 }}>
+                                        <Image style={{ height: 30, width: 30, marginRight: 10 }} source={require('../assets/icon/postIcon/pencil.png')} />
+                                        <View>
+                                            <Text style={{ fontSize: 20 }}>Edit</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Image style={{ height: 30, width: 30, marginRight: 10 }} source={require('../assets/icon/postIcon/delete.png')} />
+                                        <View>
+                                            <Text style={{ fontSize: 20 }}>Delete</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                    </Modal>
+                </View>
+
                 <View style={styles.wrapperTopPart}>
                     <ThumbnailPhoto characterImageThumb={this.props.data.user.profile_img_url} style={styles.wrapperPhotoProfile} />
 
@@ -20,23 +84,26 @@ class Post extends Component {
                         <Text style={styles.profileName}>{this.props.data.user.fullname}</Text>
                         <Text style={styles.timePost}>{this.props.data.createdAt}</Text>
                     </View>
-
-                    <View style={styles.btnMore}>
-                        <Icon size={20} name='dots-horizontal' type='material-community' />
-                    </View>
+                    <TouchableOpacity onPress={() => {
+                        this.setModalVisible(!this.state.modalVisible);
+                    }}>
+                        <View style={styles.btnMore}>
+                            <Icon size={20} name='dots-horizontal' type='material-community' />
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={styles.wrapperMiddlePart}>
 
                     <View style={[styles.wrapperPost, { flex: 1 }]}>
-                        <View style={{flex: 1, flexDirection: 'row', width: '100%' }}>
+                        <View style={{ flex: 1, flexDirection: 'row', width: '100%' }}>
 
-                            <Text style={[styles.postText, {flex: 1, flexDirection: 'row' }]}>{this.props.data.content}</Text>
+                            <Text style={[styles.postText, { flex: 1, flexDirection: 'row' }]}>{this.props.data.content}</Text>
                         </View>
 
                         <View style={[styles.wrapperInfoPart, { flex: 3, flexDirection: 'row' }]}>
 
-                            <View style={[styles.InfoPart, { flexDirection: 'row'}]}>
+                            <View style={[styles.InfoPart, { flexDirection: 'row' }]}>
                                 <View style={styles.wrapperIcon}>
                                     <Image source={likeReaction} style={{ height: 20, width: 20 }} />
                                 </View>
@@ -48,8 +115,8 @@ class Post extends Component {
                                     5 orang menyukai</Text>
                             </View>
 
-                            <View style={[styles.wrapperComment, { justifyContent: 'flex-end',alignItems: 'center', flex: 1, flexDirection: 'row' }]}>
-                                <Text style={[styles.comment, { paddingBottom: 6,backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }]}>
+                            <View style={[styles.wrapperComment, { justifyContent: 'flex-end', alignItems: 'center', flex: 1, flexDirection: 'row' }]}>
+                                <Text style={[styles.comment, { paddingBottom: 6, backgroundColor: 'transparent', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'flex-end' }]}>
                                     5 Comments</Text>
                             </View>
 

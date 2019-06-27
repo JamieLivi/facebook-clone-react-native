@@ -3,16 +3,7 @@ import { Text, View, Modal, TouchableHighlight, Alert, Button } from 'react-nati
 import {withNavigation} from 'react-navigation'
 
 class Notification extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            modalVisible: false
-        }
-    }
 
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
-    }
 
     render() {
         return (

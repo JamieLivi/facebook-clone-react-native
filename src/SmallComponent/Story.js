@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, ImageBackground } from 'react-native';
+import ThumbnailPhoto from './ThumbnailPhoto';
 
 export default class Story extends Component {
     
@@ -8,7 +9,8 @@ export default class Story extends Component {
             <View style={styles.wrapperStory}>
                 <Image source={{uri: this.props.e.characterImageFull}} style={styles.imageStory} />
                 <View style={styles.wrapperProfilePicture}>
-                    <Text style={styles.addStory}>+</Text>
+                    {/* <ImageBackground imageStyle={{ borderRadius: 4 }} resizeMode='cover' style={{height: 50, width: 50, borderRadius: '50%'}} source={{ uri: this.props.e.characterImageFull }}></ImageBackground> */}
+                    <ThumbnailPhoto characterImageThumb={this.props.e.characterImageFull} />
                 </View>
             </View>
         );
@@ -35,6 +37,8 @@ const styles = StyleSheet.create({
         height: 45,
         position: 'absolute',
         borderRadius: 50,
+        borderWidth: 2,
+        borderColor: '#427df4',
         top: 7,
         left: 7
     },
