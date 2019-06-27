@@ -10,7 +10,10 @@ class CreatePost extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            modalVisible: false
+            content: '',
+            user_id: '',
+            type: ''
+
         }
     }
 
@@ -19,6 +22,10 @@ class CreatePost extends Component {
     }
 
     render() {
+        const { navigation } = this.props;
+        const user_id = navigation.getParam('user_id', 'NO-ID');
+        const jwt = navigation.getParam('jwt', 'No - Token');
+        console.log(user_id + " ============= " + jwt)
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>

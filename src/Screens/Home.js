@@ -33,7 +33,6 @@ class Home extends Component {
             const jwt = await AsyncStorage.getItem('token');
             const user = await AsyncStorage.getItem('user');
             const userData = JSON.parse(user)
-            console.log(userData)
             const headers = {
                 'Authorization': 'Bearer ' + jwt
             };
@@ -41,13 +40,6 @@ class Home extends Component {
             let { data: posts } = await axios.get("http://192.168.0.27:5000/posts", {
                 headers: headers
             })
-
-            //    this.setState({
-            //        user: {
-            //            fullname: userData.fullname,
-            //            user_id: userData.id,
-            //            profile_img_url: userData.profile_img_url
-            //        }})
 
             this.setState({
                 jwt, posts,
@@ -71,7 +63,9 @@ class Home extends Component {
 
                     <View style={{ flex: 1, backgroundColor: '#fff', marginTop: 2, flexDirection: 'row', height: 70, padding: 15, justifyContent:'space-around' ,backgroundColor: '#fff' }}>
                         <ThumbnailPhoto characterImageThumb={profile_image} style={{ width: 40 }} />
-                        <TouchableOpacity style={{ flex: 1 }}onPress={() => { this.props.navigation.navigate('CreatePostScreen') }} >
+                        <TouchableOpacity style={{ flex: 1 }}onPress={() => { this.props.navigation.navigate('CreatePostScreen', {
+                            user_id, jwt
+                        }) }} >
                             <View style={{ alignItems:'center',justifyContent:'center',flex: 1, padding: 2, marginLeft: 7,width: 250, height: 40 }}>
                                 <Text style={{ paddingTop: 7,paddingLeft:20,height: 35 ,width: '100%' ,borderWidth: 1, borderRadius: 20, borderColor: '#959ca6' }}>What's on your mind?</Text> 
                             </View>
@@ -90,7 +84,7 @@ class Home extends Component {
                     </View>
 
                     <FlatList
-                        data={this.state.posts}
+                        data={posts}
                         renderItem={({ item }) => <Post data={item} />}
                         keyExtractor={(item) => item.id.toString()}
                     />
