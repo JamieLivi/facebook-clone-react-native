@@ -7,6 +7,7 @@ import More from '../Screens/More';
 import Notification from '../Screens/Notification';
 import TabIcon from '../SmallComponent/TabIcon';
 import MenuTop from '../SmallComponent/MenuTop';
+import CreatePost from '../SmallComponent/CreatePost';
 import AuthLoading from '../SmallComponent/AuthLoading'
 import React, { Component } from 'react';
 import FriendRequest from "../Screens/FriendRequest";
@@ -50,6 +51,30 @@ const SearchBar = () => (
     <MenuTop />
 );
 
+const CreatePosStack = createStackNavigator(
+    {
+        
+        CreatePostScreen: {
+            screen: CreatePost,
+            navigationOptions: { 
+                gesturesEnabled: false
+            }
+        }
+    },
+    {
+        initialRouteName: "CreatePostScreen",
+        defaultNavigationOptions: {
+            header: null,
+            headerStyle: {
+                display: 'none',
+                title: 'adasdasd'
+            },
+
+        }
+    }
+)
+
+//Menu Top 
 const MenuTopTabNavigation = createMaterialTopTabNavigator(
     {
         HomeScreen: {
@@ -107,12 +132,20 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
     }
 )
 
+//Main Screen
 const AppStack = createStackNavigator(
     {
         MainScreen: {
             screen: MenuTopTabNavigation,
             navigationOptions: { gesturesEnabled: false }
         },
+        CreatePostScreen : {
+            screen: CreatePosStack,
+            navigationOptions : {
+                header: null
+            }
+            
+        }
     },
     {
         initialRouteName: "MainScreen",
@@ -136,7 +169,8 @@ const AuthStack = createStackNavigator(
     },
     {
         defaultNavigationOptions: {
-            header: null
+            header: null,
+            resetOnBlur: false
         }
     }
 )
