@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'react-native-elements';
 import ThumbnailPhoto from './ThumbnailPhoto';
-// import PostModal from './PostModal'
+import { ENV } from '../dummyData/variable'
+import axios from 'axios'
 import { withNavigation } from 'react-navigation'
 import TimeAgo from 'react-timeago'
+// import PostModal from './PostModal'
 
 const likeReaction = require('../assets/icon/reaction-like.png');
 const loveReaction = require('../assets/icon/reaction-love.png');
@@ -23,12 +25,31 @@ class Post extends Component {
         this.setState({ modalVisible: visible });
     }
 
+    handleDelete = (id, jwt) => {
+        const headers = {
+            'Authorization': 'Bearer ' + jwt
+        };
+
+        axios.delete(`${ENV.url}/posts/${id}`,{
+            headers: headers
+        })
+            .then(response => {
+                this.props.navigation.navigate('AuthLoading')
+            })
+            .catch(err => {
+                console.log("send data failed")
+                alert('post failed')
+            })
+    }
+
     render() {
+        // console.log(`parent ${this.state.modalVisible}`)
         const data = this.props.data
         const navigation = this.props.navigation
 
         return (
             <View style={styles.container}>
+                {/* <PostModal visible={this.state.modalVisible} /> */}
 
                 {/* Modal EDIT DELETE POST */}
                 <View style={{ marginTop: 10 }}>
@@ -73,7 +94,7 @@ class Post extends Component {
 
                                             </TouchableOpacity>
 
-                                            <TouchableOpacity>
+                                            <TouchableOpacity onPress={()=> {this.handleDelete(data.id, this.props.jwt)}}>
                                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                                     <Image style={{ height: 30, width: 30, marginRight: 10 }} source={require('../assets/icon/postIcon/delete.png')} />
                                                     <View>

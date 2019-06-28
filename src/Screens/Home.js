@@ -21,13 +21,14 @@ class Home extends Component {
             fullname: '',
             user_id: null,
             profile_img: ''
-
+            
         }
 
     }
 
+ 
 
-    async componentWillMount() {
+    async componentDidMount() {
         try {
             const jwt = await AsyncStorage.getItem('token');
             const user = await AsyncStorage.getItem('user');
@@ -47,6 +48,7 @@ class Home extends Component {
                 profile_image: userData.profile_img_url
 
             })
+            console.log(`inside didmount ${jawet}`)
 
         } catch (error) {
             console.log(' Error: ' + error.message)
@@ -56,6 +58,8 @@ class Home extends Component {
 
     render() {
         let { jwt, posts, user_id, profile_image } = this.state
+        let jawet = this.props.navigation.getParam('jawet', 'No - Token');
+        console.log(`inside render ${jawet}`)
         return (
             <ScrollView style={styles.scrollviewWrapper}>
                 <View style={styles.mainWrapper}>

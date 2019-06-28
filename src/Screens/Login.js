@@ -6,6 +6,7 @@ import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import axios from 'axios';
 import {ENV} from '../dummyData/variable'
+import { withNavigation } from 'react-navigation'
 import deviceStorage from '../SmallComponent/deviceStorage'
 
 
@@ -15,7 +16,7 @@ const images = {
 	image2: require('../assets/img/loginhead-white.png')
 }
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
@@ -41,7 +42,7 @@ export default class Login extends Component {
 
 	handleUserLogin=(e) => {
 		const { username, password } = this.state
-		console.log(ENV.url)
+		// console.log(ENV.url)
 		axios.post(`${ENV.url}/login`, {
 			username, password
 		})
@@ -53,12 +54,14 @@ export default class Login extends Component {
 					this.setState({
 						loading: false
 					})
-					this.props.navigation.navigate('MainScreen')
+					deviceStorage.saveItem("token", response.data.token)
+					deviceStorage.saveItem("user", userData)
+					this.props.navigation.navigate('AuthLoading', {
+						jawet: response.data.token
+					})
 				} else {
 					e.preventDefault()
 				}
-				deviceStorage.saveItem("token", response.data.token)
-				deviceStorage.saveItem("user", userData)
 			
 			})
 			.catch(err => {
@@ -128,6 +131,8 @@ export default class Login extends Component {
 		);
 	}
 }
+
+export default withNavigation(Login)
 
 
 const styles = StyleSheet.create({

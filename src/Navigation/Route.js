@@ -178,7 +178,7 @@ const AuthStack = createStackNavigator(
     {
         defaultNavigationOptions: {
             header: null,
-            resetOnBlur: false
+            resetOnBlur: true
         }
     }
 )

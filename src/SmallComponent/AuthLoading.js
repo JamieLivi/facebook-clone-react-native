@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {ActivityIndicator, View, AsyncStorage, StyleSheet} from 'react-native'
+import { withNavigation } from 'react-navigation'
 
 
 class AuthLoading extends Component {
@@ -10,7 +11,7 @@ class AuthLoading extends Component {
     _bootstrapAsync = async () => {
         const userToken = await AsyncStorage.getItem('token');
         console.log(userToken)
-        this.props.navigation.navigate(userToken ? 'App' : 'Auth')
+        this.props.navigation.navigate(userToken? 'App' : 'Auth')
     }
 
     render() {
@@ -35,4 +36,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default AuthLoading;
+export default withNavigation(AuthLoading);

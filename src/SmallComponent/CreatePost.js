@@ -20,28 +20,7 @@ class CreatePost extends Component {
 
     }
 
-    // handlePost = (user_id, jwt, type) => {
-    //     if (user_id || jwt || type !== null) {
-    //         const data = {
-    //             content: this.state.content,
-    //             user_id: user_id
-    //         }
-    //         const headers = {
-    //             'Authorization': 'Bearer ' + jwt
-    //         };
-    //         axios.post(`${ENV.url}/posts`, data, {
-    //             headers: headers
-    //         })
-    //             .then(response => {
-
-    //                 this.props.navigation.navigate('MainScreen')
-    //             })
-    //             .catch(err => {
-    //                 console.log("send data failed")
-    //                 alert('post failed')
-    //             })
-    //     }
-    // }
+   
     handlePost = (user_id, jwt, type, post_id,) => {
         if (user_id || jwt || type !== null) {
 
@@ -60,7 +39,7 @@ class CreatePost extends Component {
                     headers: headers
                 })
                     .then(response => {
-                        this.props.navigation.navigate('MainScreen')
+                        this.props.navigation.navigate('AuthLoading')
                     })
                     .catch(err => {
                         console.log("send data failed")
@@ -71,13 +50,11 @@ class CreatePost extends Component {
                     content: this.state.content
                 }
                 const url = `${ENV.url}/posts/${post_id}`
-                console.log("asdasdasdasdasd\n")
-                console.log(url)
                 axios.put(url, data, {
                     headers: headers
                 })
                     .then(response => {
-                        this.props.navigation.navigate('MainScreen')
+                        this.props.navigation.navigate('AuthLoading')
                     })
                     .catch(err => {
                         console.log("send data failed")
@@ -98,7 +75,7 @@ class CreatePost extends Component {
         const content = navigation.getParam('content', '');
         const post_id = navigation.getParam('post_id', 'No - POST-ID');
 
-        console.log(user_id + " ============= " + jwt + " ============= " + type + "===============" + content + "=========" + post_id)
+        // console.log(user_id + " ============= " + jwt + " ============= " + type + "===============" + content + "=========" + post_id)
         return (
             <View style={styles.container}>
                 <ScrollView>
