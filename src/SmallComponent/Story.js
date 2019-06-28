@@ -7,10 +7,10 @@ export default class Story extends Component {
     render() {
         return (
             <View style={styles.wrapperStory}>
-                <Image source={{uri: this.props.e.characterImageFull}} style={styles.imageStory} />
+                <Image source={{ uri: this.props.data.user.profile_img_url}} style={styles.imageStory} />
                 <View style={styles.wrapperProfilePicture}>
                     {/* <ImageBackground imageStyle={{ borderRadius: 4 }} resizeMode='cover' style={{height: 50, width: 50, borderRadius: '50%'}} source={{ uri: this.props.e.characterImageFull }}></ImageBackground> */}
-                    <ThumbnailPhoto characterImageThumb={this.props.e.characterImageFull} />
+                    <ThumbnailPhoto characterImageThumb={this.props.data.user.profile_img_url} />
                 </View>
             </View>
         );

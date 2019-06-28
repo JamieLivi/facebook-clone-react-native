@@ -5,6 +5,7 @@ import { Container, Content, Form, Item, Input, Button, StyleProvider } from 'na
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 import axios from 'axios';
+import {ENV} from '../dummyData/variable'
 import deviceStorage from '../SmallComponent/deviceStorage'
 
 
@@ -40,7 +41,8 @@ export default class Login extends Component {
 
 	handleUserLogin=(e) => {
 		const { username, password } = this.state
-		axios.post("http://192.168.0.27:5000/login", {
+		console.log(ENV.url)
+		axios.post(`${ENV.url}/login`, {
 			username, password
 		})
 			.then(response => {

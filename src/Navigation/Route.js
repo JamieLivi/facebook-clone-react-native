@@ -8,6 +8,7 @@ import Notification from '../Screens/Notification';
 import TabIcon from '../SmallComponent/TabIcon';
 import MenuTop from '../SmallComponent/MenuTop';
 import CreatePost from '../SmallComponent/CreatePost';
+import Post from '../SmallComponent/Post';
 import AuthLoading from '../SmallComponent/AuthLoading'
 import React, { Component } from 'react';
 import FriendRequest from "../Screens/FriendRequest";
@@ -56,6 +57,12 @@ const CreatePosStack = createStackNavigator(
         
         CreatePostScreen: {
             screen: CreatePost,
+            navigationOptions: { 
+                gesturesEnabled: false
+            }
+        },
+        PostScreen: {
+            screen: Post,
             navigationOptions: { 
                 gesturesEnabled: false
             }
@@ -118,6 +125,7 @@ const MenuTopTabNavigation = createMaterialTopTabNavigator(
 
     },
     {
+        initialRouteName: 'HomeScreen',
         tabBarPosition: 'top',
         tabBarOptions: {
             showLabel: false,
@@ -186,7 +194,7 @@ const AppContainer = createAppContainer(createSwitchNavigator(
     {
 
         initialRouteName: 'AuthLoading',
-        resetOnBlur: false,
+        resetOnBlur: true,
     }
 ));
 
