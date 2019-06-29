@@ -75,7 +75,6 @@ class CreatePost extends Component {
         const content = navigation.getParam('content', '');
         const post_id = navigation.getParam('post_id', 'No - POST-ID');
 
-        // console.log(user_id + " ============= " + jwt + " ============= " + type + "===============" + content + "=========" + post_id)
         return (
             <View style={styles.container}>
                 <ScrollView>

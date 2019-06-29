@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     wrapperPhotoProfile: { width: 50, height: 50, padding: 5 },
     photoProfile: { width: '100%', height: '100%', borderRadius: 100 },
     wrapperProfileName: { flex: 1, height: 50, marginTop: 5 },
-    profileName: { fontSize: 20, color: '#000', fontWeight: 'bold' },
+    profileName: { fontSize: 17, color: '#000', fontWeight: 'bold' },
     timePost: { fontSize: 10, marginTop: -2 },
     btnMore: { justifyContent: 'center', alignItems: 'center', width: 40, height: 50, padding: 5 },
     wrapperMiddlePart: {
