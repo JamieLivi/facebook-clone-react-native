@@ -1,3 +1,3 @@
 export const ENV = {
-    url: 'http://192.168.0.47:5000'
+    url: 'http://192.168.0.13:5000'
 }
